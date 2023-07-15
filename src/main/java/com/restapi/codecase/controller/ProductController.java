@@ -2,7 +2,6 @@ package com.restapi.codecase.controller;
 
 import com.restapi.codecase.model.ProductModel;
 import com.restapi.codecase.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProductController {
 
-    @Autowired
     ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public ProductModel createProduct(@RequestBody ProductModel product) {

@@ -2,7 +2,6 @@ package com.restapi.codecase.service;
 
 import com.restapi.codecase.model.ProductModel;
 import com.restapi.codecase.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    @Autowired
     ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public ProductModel createProduct(ProductModel product) {
         return productRepository.save(product);
