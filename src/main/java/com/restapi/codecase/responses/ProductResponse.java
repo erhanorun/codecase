@@ -9,14 +9,14 @@ import java.util.List;
 public class ProductResponse {
 
     Long id;
-    Long productId;
+    Long categoryId;
     String productName;
     String productMark;
     double productPrice;
 
     public ProductResponse(ProductModel productModel) {
         this.id = productModel.getId();
-        this.productId = productModel.getCategoryModel().getId();
+        this.categoryId = productModel.getCategoryModel().getId();
         this.productName = productModel.getCategoryModel().getCategoryName();
         this.productMark = productModel.getProductMark();
         this.productPrice = productModel.getProductPrice();
