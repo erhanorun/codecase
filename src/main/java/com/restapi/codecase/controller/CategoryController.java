@@ -7,32 +7,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/categories")
+public class CategoryController {
 
     ProductService productService;
 
-    public ProductController(ProductService productService) {
+    public CategoryController(ProductService productService) {
         this.productService = productService;
     }
 
-    @RequestMapping(value = "/products", method = RequestMethod.POST)
+    @RequestMapping(value = "/categories", method = RequestMethod.POST)
     public ProductModel createProduct(@RequestBody ProductModel product) {
         return productService.createProduct(product);
     }
 
-    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    @RequestMapping(value = "/categories", method = RequestMethod.GET)
     public List<ProductModel> readProduct() {
         return productService.getProduct();
     }
 
-    @RequestMapping(value = "/products/{productId}", method = RequestMethod.PUT)
-    public ProductModel updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody ProductModel productDetails) {
+    @RequestMapping(value = "/categories/{categoryId}", method = RequestMethod.PUT)
+    public ProductModel updateProduct(@PathVariable(value = "categoryId") Long productId, @RequestBody ProductModel productDetails) {
         return productService.updateProduct(productId, productDetails);
     }
 
-    @RequestMapping(value = "/products/{productId}", method = RequestMethod.DELETE)
-    public void deleteProduct(@PathVariable(value = "productId") Long productId) {
+    @RequestMapping(value = "/categories/{categoryId}", method = RequestMethod.DELETE)
+    public void deleteProduct(@PathVariable(value = "categoryId") Long productId) {
         productService.deleteProduct(productId);
     }
 
