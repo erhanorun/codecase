@@ -1,7 +1,7 @@
 package com.restapi.codecase.controller;
 
-import com.restapi.codecase.model.ProductModel;
-import com.restapi.codecase.service.ProductService;
+import com.restapi.codecase.model.CategoryModel;
+import com.restapi.codecase.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,30 +10,30 @@ import java.util.List;
 @RequestMapping("/categories")
 public class CategoryController {
 
-    ProductService productService;
+    CategoryService categoryService;
 
-    public CategoryController(ProductService productService) {
-        this.productService = productService;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @RequestMapping(value = "/categories", method = RequestMethod.POST)
-    public ProductModel createProduct(@RequestBody ProductModel product) {
-        return productService.createProduct(product);
+    public CategoryModel createCategory(@RequestBody CategoryModel category) {
+        return categoryService.createCategory(category);
     }
 
     @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public List<ProductModel> readProduct() {
-        return productService.getProduct();
+    public List<CategoryModel> readCategory() {
+        return categoryService.getCategory();
     }
 
     @RequestMapping(value = "/categories/{categoryId}", method = RequestMethod.PUT)
-    public ProductModel updateProduct(@PathVariable(value = "categoryId") Long productId, @RequestBody ProductModel productDetails) {
-        return productService.updateProduct(productId, productDetails);
+    public CategoryModel updateCategory(@PathVariable(value = "categoryId") Long categoryId, @RequestBody CategoryModel categoryDetails) {
+        return categoryService.updateCategory(categoryId, categoryDetails);
     }
 
     @RequestMapping(value = "/categories/{categoryId}", method = RequestMethod.DELETE)
-    public void deleteProduct(@PathVariable(value = "categoryId") Long productId) {
-        productService.deleteProduct(productId);
+    public void deleteCategory(@PathVariable(value = "categoryId") Long categoryId) {
+        categoryService.deleteCategory(categoryId);
     }
 
 }
